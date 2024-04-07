@@ -30,11 +30,18 @@ public:
 			return true;
 		return false;
 	}
+
 	bool operator == (const Person& p)
 	{
-		if (name.compare(p.getName()) == 0)
+		if (!name.compare(p.name) && age == p.age)
 			return true;
 		return false;
+	}
+	Person& operator = (Person& p)
+	{
+		name = p.name;
+		age = p.age;
+		return *this;
 	}
 	string& getName()  { return name; }
 	string getName() const { return name; }
@@ -42,7 +49,6 @@ public:
 private:
 	string name;
 	int age;
-
 };
 
 ostream& operator<<(ostream& out, const Person& p) {
@@ -136,7 +142,6 @@ bool isGroupFull(Group g) {
 	return (g.getSize() == g.getCap());
 }
    
-/*****************************************/
 int main()
 {
 	
@@ -166,8 +171,8 @@ int main()
 	
 	Person Persons[10];
 	Person erfan("erfan",20);
-	Persons[1]=erfan;
-	for(int i=0;i<10;i++){
+	Persons[0]=erfan;
+	for(int i=1;i<10;i++){
 		Persons[i].getName()=to_string(rand()%100);
 	}
 	sort(Persons,Persons+10);//what operator should be overloaded for sort? :) 
@@ -175,7 +180,7 @@ int main()
 	for(int i=0;i<10;i++){
 		cout<<Persons[i].getName()<<' ';
 	}
-	
-	cout<<find(Persons,Persons+10,erfan);
+	if(find(Persons, Persons + 10, erfan) != Persons + 10)
+	cout<<*find(Persons,Persons+10,erfan);
 }
 
