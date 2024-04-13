@@ -1,3 +1,4 @@
+//test
 #include "Score.h"
 
 Score::Score(int score,char* detail, Label label) :ID(Score::ID_generator) {
