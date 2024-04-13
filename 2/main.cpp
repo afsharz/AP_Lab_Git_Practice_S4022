@@ -20,8 +20,7 @@ int main()
 	Score scores[10];//we have default constructor so we should be fine right?:)
 
 	FOR(10) {
-		SETSCORE(i)
-		//why = betwean two scores raises an error?:)
+		SETSCORE(i);
 	}
 	FOR(10) {
 		print(scores[i]);
